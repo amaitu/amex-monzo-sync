@@ -19,7 +19,7 @@ function parseNotification(input) {
 
 async function handleRequest(request) {
     const reqBody = await readRequestBody(request);
-    const notificationString = reqBody.notification;
+    const notificationString = reqBody.value1;
 
     if (!isAmex(notificationString)) {
         return false;
