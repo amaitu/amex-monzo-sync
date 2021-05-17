@@ -17,3 +17,7 @@ A watcher will detect notifications from the Amex app for Android. Notifications
 Now any American Express payments will be reflected in your main account balance.
 
 Further - set Amex payments from [Monzo to come out of the same pot to close the loop.](https://monzo.com/help/budgeting-overdrafts-savings/web-bill-pots)
+
+![notification](https://github.com/amaitu/amex-monzo-sync/blob/main/screenshots/notification.jpg)
+
+![monzo](https://github.com/amaitu/amex-monzo-sync/blob/main/screenshots/monzo.jpeg)
