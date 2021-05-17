@@ -6,28 +6,21 @@ async function readResponseBody(response) {
     return await request.body
 }
 
-function isAmex(input) {
-    return input.toLowerCase().includes("amex");
-}
-
-// Assumes a Google pay Android notification string
+// Assumes an Amex notification string
 function parseNotification(input) {
-    const amountWithCurrency = (input.split(' '))[0]
-    const amountWithoutCurrency = amountWithCurrency.replace(/[^\d.-]/g, '');
-    return amountWithoutCurrency
+    const chargeStatement = input.split('£')[1]
+    const amount = chargeStatement.split(' ')[0]
+    return amount;
 }
 
 async function handleRequest(request) {
     const reqBody = await readRequestBody(request);
-    const notificationString = reqBody.value1;
-
-    if (!isAmex(notificationString)) {
-        return false;
-    }
+    const notificationString = reqBody.notification;
 
     const amount = parseNotification(notificationString);
+    console.log(amount);
 
-    const monzoResponse = await fetch(MONZO_WEBHOOK_URL, {
+    await fetch("MONZO_URL", {
         method: "POST",
         body: JSON.stringify({"value1": amount}),
         headers: {
@@ -36,7 +29,7 @@ async function handleRequest(request) {
         },
     })
 
-    return new Response('OK');
+    return new Response(amount);
 }
 
 addEventListener("fetch", event => {
