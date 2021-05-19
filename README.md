@@ -2,7 +2,7 @@
 
 A quick automation I made for myself. Keeps your American Express balance in sync with your Monzo balance.
 
-A watcher will detect notifications from the Amex app for Android. Notifications are parsed to get the £value of the amount spend, which is then added to a pot, and deducted from the main Monzo account balance.
+A watcher will detect notifications from the Amex app for Android. Notifications are parsed to get the £value of the amount spent, which is then added to a pot, and deducted from the main Monzo account balance.
 
 `worker.js` is deployed to CloudFlare Workers (a serverless function). 
 
